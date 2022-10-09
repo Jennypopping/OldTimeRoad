@@ -7,10 +7,12 @@
 <body>
 <div class="box" >
     <h3 style="text-align: center">点击事件回放</h3>
+    <a href="{{ url_for('show_img') }}">刷新</a>
     <a href="{{ url_for('delete_all_files') }}">删除</a>
     {% for img in img_stream_list %}
     <ul>
         <li>
+<!--            <p>{{ loop.index }}</p>-->
             <p>{{ img_time_list[loop.index0] }}</p>
             <img src="data:;base64,{{ img }}" width="160px" height="240px" alt=""/>
         </li>

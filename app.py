@@ -4,37 +4,16 @@
 from flask import Flask, redirect, url_for
 from flask import render_template
 import os
-import time
+from main import convert_timestamp, return_img_stream, monitor_screen
 
 app = Flask(__name__)
 
 
-def return_img_stream(img_path_list):
-    """
-    工具函数:
-    获取本地图片流
-    :param img_local_path:文件单张图片的本地绝对路径
-    :return: 图片流
-    """
-    import base64
-    img_stream_list = []
-    for img_path in img_path_list:
-        with open(img_path, 'rb') as img_f:
-            stream_temp = img_f.read()
-            img_stream_list.append(base64.b64encode(stream_temp).decode())
-    return img_stream_list
-
-
-def convert_timestamp(timestamp_list):
-    customize_style_time_list = []
-    for timestamp in timestamp_list:
-        localtime = time.localtime(timestamp)
-        customize_style_time_list.append(time.strftime("%Y-%m-%d %H:%M:%S", localtime))
-    return customize_style_time_list
-
-
 @app.route('/', methods=['GET', 'POST'])
 def show_img():
+    """
+    首页展示所有截图
+    """
     img_list = []
     img_timestam_list = []
     for filename in os.listdir('img'):
@@ -64,3 +43,4 @@ def delete_all_files():
 
 if __name__ == '__main__':
     app.run(debug=True, port=8080)
+    # draw_img()
