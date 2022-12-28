@@ -36,11 +36,11 @@ def screen_cap(x_value, y_value):
     命令行例子:adb exec-out screencap -p > test.png
     """
     current_time = str(int(time.time()))
-    img_path = 'img/' + current_time + '.png'
+    img_path = 'static/images/' + current_time + '.png'
     # result = os.system('adb exec-out screencap -p > img/' + current_time + '.png')
     result = os.system('adb exec-out screencap -p > ' + img_path)
     if result == 0:
-        print("截图成功，点击事件坐标x:"+ str(x_value) + "y:" + str(y_value))
+        print("截图成功，点击事件坐标x:" + str(x_value) + "y:" + str(y_value))
     draw_img(img_path, x_value, y_value)
 
 
@@ -98,6 +98,4 @@ def draw_img(img_path, x, y):
 
 
 if __name__ == '__main__':
-    # pass
     print(monitor_screen())
-    # draw_img()
