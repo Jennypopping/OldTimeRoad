@@ -1,4 +1,5 @@
 .static/
 .idea/
+.DS_Store
 *.png
 *.iml
