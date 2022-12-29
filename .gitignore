@@ -1,5 +1,6 @@
 .static/
 .idea/
+.venv/
 .DS_Store
 *.png
 *.iml
