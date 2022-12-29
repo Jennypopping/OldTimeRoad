@@ -18,12 +18,14 @@ def monitor_screen():
     """
     p = subprocess.Popen('adb shell getevent -l', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print('开始监听屏幕点击事件')
+    catch_time = time.time()
     while True:
         cmd_output = p.stdout.readline().decode()
-        # print(cmd_output)
+        current_time = time.time()
         if "ABS_MT_POSITION_X" in cmd_output:
             x_value = get_coordinate_value(cmd_output)
-        if "ABS_MT_POSITION_Y" in cmd_output:
+        if "ABS_MT_POSITION_Y" in cmd_output and current_time - catch_time > 1:  # 操作间隔大于1s才进行截图，避免重复照片过多
+            catch_time = time.time()
             y_value = get_coordinate_value(cmd_output)
             print("x:", x_value, "y:", y_value)
             print("存在屏幕点击事件")
@@ -99,3 +101,4 @@ def draw_img(img_path, x, y):
 
 if __name__ == '__main__':
     print(monitor_screen())
+    # print(time.time())
