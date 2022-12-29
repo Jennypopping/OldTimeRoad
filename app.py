@@ -16,7 +16,7 @@ def show_img():
     """
     img_list = []
     img_timestamp_list = []
-    for filename in os.listdir('static1/images'):
+    for filename in os.listdir('static/images'):
         img_timestamp_list.append(int(os.path.basename(filename).split(".")[0]))
         img_list.append('static/images/' + filename)
     img_timestamp_list.sort(reverse=True)
@@ -32,9 +32,9 @@ def delete_all_files():
     """
     删除指定img文件夹目录下的所有文件
     """
-    del_list = os.listdir('static1/images')
+    del_list = os.listdir('static/images')
     for f in del_list:
-        file_path = os.path.join('static1/images', f)
+        file_path = os.path.join('static/images', f)
         if os.path.isfile(file_path):
             os.remove(file_path)
     return redirect(url_for('show_img'))
