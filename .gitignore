@@ -1,6 +1,5 @@
 .idea/
 .venv/
 .DS_Store
-*.png
 *.iml
 __pycache__
