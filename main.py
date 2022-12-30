@@ -92,13 +92,17 @@ def convert_timestamp(timestamp_list):
 
 
 def draw_img(img_path, x, y):
+    """
+    画图
+    :param img_path: 图片路径
+    :param x: 点击区域x坐标
+    :param y: 点击区域y坐标
+    """
     img = cv2.imread(img_path)  # 读取图片
     cv2.circle(img, (x, y), 60, (0, 0, 255), 10)
-    # cv2.circle(img, center, radius, color[, thickness[, lineType[, shift]]])
-    # cv2.circle(输入的图片data,圆心位置,圆的半径,圆的颜色,圆形轮廓的粗细（如果为正）负数(-1)表示要绘制实心圆,圆边界的类型,中心坐标和半径值中的小数位数)
+    # circle(输入的图片data,圆心位置,圆的半径,圆的颜色,圆形轮廓的粗细（如果为正）负数(-1)表示要绘制实心圆,圆边界的类型,中心坐标和半径值中的小数位数)
     cv2.imwrite(img_path, img)
 
 
 if __name__ == '__main__':
     print(monitor_screen())
-    # print(time.time())
